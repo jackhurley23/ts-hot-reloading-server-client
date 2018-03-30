@@ -10,7 +10,7 @@ app.get("/api", (req, res) => {
   console.log("get API");
   res.send({
     message:
-      "I am a server route and can also be hot reloaded: " + someObj.get()
+      "I am a server route and can also be hot reloaded! " + someObj.get()
   });
   someObj.inc();
 });
