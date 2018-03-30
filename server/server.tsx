@@ -1,10 +1,13 @@
 import express from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
-import App from "../common/App";
+import { hot } from "react-hot-loader";
+
+import { App } from "../common/App";
 import { someObj } from "./anotherFile";
 
 export const app = express();
+export default hot(module)(app);
 
 app.get("/api", (req, res) => {
   console.log("get API");

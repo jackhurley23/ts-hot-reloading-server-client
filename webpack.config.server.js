@@ -11,10 +11,22 @@ module.exports = {
   externals: [nodeExternals({ whitelist: ["webpack/hot/poll?1000"] })],
   module: {
     rules: [
-      { test: /\.js?$/, use: "babel-loader", exclude: /node_modules/ },
       {
         test: /\.tsx?$/,
-        use: "awesome-typescript-loader",
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              babelrc: true,
+              plugins: ["react-hot-loader/babel"]
+            }
+          },
+          "awesome-typescript-loader"
+        ],
+        include: [
+          path.join(__dirname, "server"),
+          path.join(__dirname, "common")
+        ],
         exclude: /node_modules/
       }
     ]
