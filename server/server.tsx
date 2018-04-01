@@ -4,23 +4,18 @@ import { renderToString } from "react-dom/server";
 import { hot } from "react-hot-loader";
 
 import { App } from "../common/App";
-import { someObj } from "./anotherFile";
 
 export const app = express();
 export default hot(module)(app);
 
 app.get("/api", (req, res) => {
-  console.log("get API");
   res.send({
-    message:
-      "I am a server route and can also be hot reloaded! " + someObj.get()
+    message: "I am a server route and can also be hot reloaded! "
   });
-  someObj.inc();
 });
 
 app.get("*", (req, res) => {
-  let application = renderToString(<App />);
-  // const application = "Hello from fake react";
+  const application = renderToString(<App />);
 
   const html = `<!doctype html>
     <html class="no-js" lang="">
@@ -39,6 +34,3 @@ app.get("*", (req, res) => {
 
   res.send(html);
 });
-
-// export default app;
-// export { app };

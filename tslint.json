@@ -1,4 +1,6 @@
 {
-  "rules": {},
+  "rules": {
+    "no-submodule-imports": [true, "react-dom/server"]
+  },
   "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"]
 }
